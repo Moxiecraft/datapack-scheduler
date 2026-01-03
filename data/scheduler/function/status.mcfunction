@@ -1,0 +1,2 @@
+tellraw @a[tag=scheduler_debug] [{"text":"[scheduler] mode=tick qsize=","color":"yellow"},{"score":{"name":"#qsize","objective":"dps_qsize"}},{"text":" budget=","color":"yellow"},{"score":{"name":"#budget","objective":"dps_budget"}},{"text":" tick_calls=","color":"yellow"},{"score":{"name":"#tick_calls","objective":"dps_tick"}}]
+tellraw @a[tag=scheduler_debug] [{"text":"[scheduler] head=","color":"gray"},{"nbt":"queue[0]","storage":"scheduler:queue"}]
