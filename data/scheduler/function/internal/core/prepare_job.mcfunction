@@ -9,3 +9,8 @@ scoreboard players operation #job dps_runat += #delay dps_runat
 execute store result storage scheduler:queue new_job.run_at int 1 run scoreboard players get #job dps_runat
 
 data remove storage scheduler:queue new_job.delay_ticks
+
+# If the caller supplied interval_ticks, automatically mark this job as repeating.
+scoreboard players set #tmpid dps_tmp 0
+execute store success score #tmpid dps_tmp run data get storage scheduler:queue new_job.interval_ticks 1
+execute if score #tmpid dps_tmp matches 1 run data modify storage scheduler:queue new_job.repeat set value 1b
