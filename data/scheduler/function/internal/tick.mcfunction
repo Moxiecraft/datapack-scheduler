@@ -1,3 +1,6 @@
+#Update qsize to actually reflect jobs in the queue
+execute store result score #qsize dps_qsize run data get storage scheduler:queue queue
+
 # Tick-mode driver (minimal when idle)
 scoreboard players add #tick_calls dps_tick 1
 execute if score #qsize dps_qsize matches ..0 run return 0
