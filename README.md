@@ -1,8 +1,8 @@
 # Datapack Scheduler
 
-Namespace: Scheduler
-Minecraft: 1.21+
-Cooperative Task Scheduler for Datapacks
+Namespace: Scheduler<br />
+Minecraft: 1.21+<br />
+Cooperative Task Scheduler for Datapacks<br />
 
 The scheduler datapack provides a shared, lightweight task scheduler that other datapacks can depend on to run to run delayed or repeating logic **without needing their own tick functions.**
 
@@ -31,7 +31,7 @@ Place scheduler in your datapacks folder.
 
 Run:
 
-`Run /minecraft:reload.`
+`/minecraft:reload.`
 
 Verify Loading:
 
@@ -54,11 +54,15 @@ pack-name/
                     job_handlers.json
 ```
 
+In your job_handlers.json:
+
+```json
 {
     "values": [
         "pack-name:handler"
     ]
 }
+```
 
 Job handlers will match the job type, execute the logic, and mark the job as handled.
 
