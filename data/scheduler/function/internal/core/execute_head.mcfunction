@@ -15,8 +15,11 @@ data remove storage scheduler:queue error
 function scheduler:internal/core/dispatch
 
 # Policy: if job was not handled or errored, cancel repeating
-execute unless data storage scheduler:queue {handled:1b} run data modify storage scheduler:queue cancel_repeat set value 1b
-execute if data storage scheduler:queue {error_flag:1b} run data modify storage scheduler:queue cancel_repeat set value 1b
+#execute unless data storage scheduler:queue {handled:1b} run data modify storage scheduler:queue cancel_repeat set value 1b
+#execute if data storage scheduler:queue {error_flag:1b} run data modify storage scheduler:queue cancel_repeat set value 1b
+
+execute if data storage scheduler:queue {error_flag:1b} if data storage scheduler:queue {tmp:{repeat:1b}} run data modify storage scheduler:queue cancel_repeat set value 1b
+execute unless data storage scheduler:queue {handled:1b} if data storage scheduler:queue {tmp:{repeat:1b}} run data modify storage scheduler:queue cancel_repeat set value 1b
 
 # Determine whether this job is repeating.
 # IMPORTANT: NBT pattern matching like {interval_ticks:1} checks for a literal value of 1,
